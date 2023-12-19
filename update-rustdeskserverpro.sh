@@ -21,48 +21,15 @@ echo "Stoping Rustdesk-HBBS Service..."
 sudo systemctl stop rustdesk-hbbs.service
 echo "Stoping Rustdesk-HBBR Service..."
 sudo systemctl stop rustdesk-hbbr.service
+
 echo "Waiting for 20 seconds..."
 echo ""
-echo -n "20 "
-sleep 1
-echo -n "19 "
-sleep 1
-echo -n "18 "
-sleep 1
-echo -n "17 "
-sleep 1
-echo -n "16 "
-sleep 1
-echo -n "15 "
-sleep 1
-echo -n "14 "
-sleep 1
-echo -n "13 "
-sleep 1
-echo -n "12 "
-sleep 1
-echo -n "11 "
-sleep 1
-echo -n "10 "
-sleep 1
-echo -n "09 "
-sleep 1
-echo -n "08 "
-sleep 1
-echo -n "07 "
-sleep 1
-echo -n "06 "
-sleep 1
-echo -n "05 "
-sleep 1
-echo -n "04 "
-sleep 1
-echo -n "03 "
-sleep 1
-echo -n "02 "
-sleep 1
-echo -n "01 "
-sleep 1
+
+for ((i=20; i>=1; i--)); do
+  printf "%02d " "$i"
+  sleep 1
+done
+
 echo "done."
 ARCH=$(uname -m)
 
@@ -107,6 +74,9 @@ else
     VER=$(uname -r)
 fi
 
+    echo "OS: $OS"
+    echo "VER: $VER"
+    echo "UPSTREAM_ID: $UPSTREAM_ID"
 
 # Output debugging info if $DEBUG set
 if [ "$DEBUG" = "true" ]; then
